@@ -4,3 +4,11 @@ node_modules/
 releases/
 memory/archive/
 *.log
+
+# 敏感凭证
+credentials.py
+credentials-get.sh
+credentials-store.sh
+CREDENTIALS.md
+CREDENTIALS-GUIDE.md
+GITHUB-BACKUP-SETUP.md
