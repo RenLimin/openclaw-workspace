@@ -12,3 +12,5 @@ credentials-store.sh
 CREDENTIALS.md
 CREDENTIALS-GUIDE.md
 GITHUB-BACKUP-SETUP.md
+.env
+memory/archive/
