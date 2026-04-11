@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "updated_at": "2026-04-11",
+  "agents": {
+    "jerry": {
+      "emoji": "🦞",
+      "status": "training",
+      "capabilities": ["任务协调", "进度汇总", "冲突处理"],
+      "skills": [],
+      "current_load": 0,
+      "last_active": null
+    },
+    "ella": {
+      "emoji": "🦊",
+      "status": "initializing",
+      "capabilities": ["合同审批", "OA流程", "合同义务提取"],
+      "skills": [],
+      "current_load": 0,
+      "last_active": null
+    },
+    "oliver": {
+      "emoji": "🐘",
+      "status": "initializing",
+      "capabilities": ["ONES操作", "项目进度", "风险预警"],
+      "skills": [],
+      "current_load": 0,
+      "last_active": null
+    },
+    "aaron": {
+      "emoji": "🦉",
+      "status": "initializing",
+      "capabilities": ["报告分析", "统计汇总", "经营计划"],
+      "skills": [],
+      "current_load": 0,
+      "last_active": null
+    },
+    "iris": {
+      "emoji": "🐦‍⬛",
+      "status": "initializing",
+      "capabilities": ["邮件管理", "文档整理", "通知分发"],
+      "skills": [],
+      "current_load": 0,
+      "last_active": null
+    }
+  }
+}
