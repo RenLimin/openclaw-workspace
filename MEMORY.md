@@ -24,6 +24,11 @@
 
 ## 重要决策
 - 2026-04-11: Rex 重启 Jerry，沿用旧名
+- 2026-04-11: 确定 v2.0 团队架构
+  - 单仓库多目录 (RenLimin/openclaw-workspace)
+  - 5 个 agent: Jerry(协调), Ella(合同+OA), Oliver(项目+ONES), Aaron(经营), Iris(辅助+邮件)
+  - Oscar 合并入 Ella
+  - 建立 team-rules/ 统一规则框架
 
 ## 经验教训
 _(待积累)_
