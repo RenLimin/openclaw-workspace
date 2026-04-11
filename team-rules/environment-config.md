@@ -51,7 +51,7 @@
 |------|-----|------|
 | 备份代理 | `http://127.0.0.1:7897` | 默认关闭，直连失败时启用 |
 | Clash Verge | `/Applications/Clash Verge.app` | 代理客户端，需手动启动 |
-| Clash 配置端口 | mixed-port: 7890 | 实际代理端口 |
+| Clash Verge 端口 | 7897 | 实际代理端口 (mihomo) |
 
 ### 代理启用步骤
 1. 启动 Clash Verge (`/Applications/Clash Verge.app`)
