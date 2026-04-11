@@ -82,10 +82,23 @@ agents/{name}/
 - 不使用 `feat/` 分支，降低管理成本
 - 需要回滚时使用 `git revert`，不使用 force push
 
-### 5.2 提交约束
-- 所有提交由 Jerry 的会话发起（Jerry 是唯一 push 发起者）
-- 每个 agent 的训练成果通过独立 commit 记录
+### 5.2 提交权限
+- **规则提交**: 由 Jerry 发起
+- **Agent 独立提交**: 满足条件时（见第 6 节），agent 可自行提交
+- **每个 agent 的训练成果通过独立 commit 记录**
 - commit message 格式见第 3 节
+
+### 5.3 Agent 独立提交权限
+满足以下条件时，agent **可以自行提交** GitHub：
+
+1. **技能训练完成**：某个域技能的完整训练阶段完成
+2. **阶段性训练完成**：训练记忆本中某个 Phase 标记为完成
+3. **技能更新**：技能文件修改（版本号已更新）
+
+**不满足以下条件时，不得自行提交**：
+- 训练中途（Phase 未完成）
+- 仅修改了非技能文件（由 Jerry 统一处理）
+- 未通过健康检查验证
 
 ### 5.3 不提交的内容
 - `*.sqlite`（数据库文件）
@@ -102,7 +115,53 @@ agents/{name}/
 - `scripts/` 脚本文件
 - `memory/` 记忆文件
 
-## 6. 备份仓库
+## 6. Agent 独立提交流程
+
+### 6.1 触发条件
+Agent 在以下时机触发独立提交：
+- **技能训练完成**: 该技能所有练习通过，DEPENDENCIES.md 已填写完整
+- **阶段性训练完成**: 训练记忆本中某个 Phase 完成
+- **技能更新**: 本地修改了技能文件，且版本号已更新
+
+### 6.2 提交流程
+```
+Agent 训练完成/阶段完成
+    │
+    ▼
+1. 更新 training-memory.md（标记完成）
+2. 更新技能 VERSION（如有变更）
+3. 更新 _meta.json（lastUpdated, version）
+4. 确保 DEPENDENCIES.md 已填写
+5. git add agents/{name}/workspace/skills/{skill-name}/
+6. git add agents/{name}/memory/training-memory.md
+7. git commit -m "[{emoji}] {skill-name} 训练完成 v{version}"
+8. git push origin main
+```
+
+### 6.3 提交范围
+Agent **只能提交自己目录下的文件**：
+- ✅ `agents/{name}/workspace/skills/` — 自己的技能
+- ✅ `agents/{name}/memory/` — 自己的训练记忆
+- ✅ `agents/{name}/agent/config.json` — 自己的配置
+- ❌ `agents/{other}/` — 其他 agent 的文件
+- ❌ `team-rules/` — 团队规则
+- ❌ `skills/` — 共享技能
+- ❌ `workspace/memory/` — Jerry 的记忆
+
+### 6.4 提交后动作
+- 提交成功后，向 Jerry 汇报：`[{emoji}] {skill-name} 已提交 GitHub v{version}`
+- Jerry 更新 `agents/registry.json` 中该 agent 的 `last_active` 和 `status`
+
+### 6.5 冲突处理
+- 如果 push 被拒绝（远程有新提交）：
+  1. `git pull --rebase origin main`
+  2. 解决冲突（如有）
+  3. 重新 push
+  4. 3 次失败后上报 Jerry
+
+---
+
+## 7. 备份仓库
 
 - **workspace 仓库**: `RenLimin/openclaw-workspace` — 代码和配置
 - **备份仓库**: `RenLimin/openclaw-backup` — 包含 session 记录、完整配置等

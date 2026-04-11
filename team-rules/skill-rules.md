@@ -118,6 +118,24 @@ python -c "import playwright; print('OK')"
                               直接更新 → 验证 → 完成
 ```
 
+### 6.1 技能训练完成后的独立更新
+
+当某个 agent 的技能完成训练或阶段性训练后，**agent 可自行发起 GitHub 提交**：
+
+```
+技能训练完成 / 阶段性训练完成
+    │
+    ▼
+1. 更新 training-memory.md
+2. 更新技能 VERSION（如有变更）
+3. 更新 _meta.json
+4. 确保 DEPENDENCIES.md 完整
+5. git add + commit + push（仅自己的文件）
+6. 向 Jerry 汇报提交结果
+```
+
+**权限**：agent 只能提交自己目录下的文件（见 `github-rules.md` 第 6 节）
+
 ---
 
 ## 7. 定期更新检查机制

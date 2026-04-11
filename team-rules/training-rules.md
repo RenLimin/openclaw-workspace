@@ -113,14 +113,21 @@ agents/{name}/memory/training-memory.md
 - 如果某个训练步骤非阻塞核心功能，经 Jerry 确认后可跳过
 - 跳过的步骤必须记录到 training-memory.md，标注"已跳过 - 原因"
 
-## 6. 训练成果验收
+## 6. 训练成果验收与 GitHub 提交
 
+### 6.1 验收标准
 - ✅ 训练记忆本已更新
 - ✅ 专属技能可正常使用
 - ✅ 能正确接收 Jerry 的任务分派
 - ✅ 能正确向 Jerry 汇报结果
 - ✅ 遵守安全规则
-- ✅ 代码/文件已提交 Git
+- ✅ DEPENDENCIES.md 已填写完整
+
+### 6.2 验收后自动提交
+验收通过后，agent 按 `github-rules.md` 第 6 节执行独立提交：
+1. 提交自己的技能文件和训练记忆
+2. 向 Jerry 汇报提交结果
+3. Jerry 更新 registry.json 状态
 
 ---
 
