@@ -6,15 +6,14 @@
 - 语言偏好: 中文
 - 有一套完整的多智能体团队系统
 
-## 智能体团队 (6个)
+## 智能体团队 (5个)
 | 智能体 | 职责 | Emoji |
 |--------|------|-------|
 | Jerry | 主代理 & 团队协调员 | 🦞 |
-| Ella | 合同审批和管理 | 🦊 |
-| Aaron | 经营报告分析 | 🦉 |
-| Oliver | 项目管理 (ONES) | 🐘 |
-| Iris | 邮件管理 | 🐦‍⬛ |
-| Oscar | OA 流程 | 🐳 |
+| Ella | 合同管理 (含 OA 审批) | 🦊 |
+| Oliver | 项目管理 (含 ONES 操作) | 🐘 |
+| Aaron | 经营计划 | 🦉 |
+| Iris | 辅助工作 (含 邮件管理) | 🐦‍⬛ |
 
 ## 关键系统信息
 - 模型: 百炼 (bailian) - qwen3.5-plus
@@ -28,7 +27,7 @@
   - 单仓库多目录 (RenLimin/openclaw-workspace)
   - 5 个 agent: Jerry(协调), Ella(合同+OA), Oliver(项目+ONES), Aaron(经营), Iris(辅助+邮件)
   - Oscar 合并入 Ella
-  - 建立 team-rules/ 统一规则框架
+  - 建立 team-rules/ 统一规则框架（4→5 个文件，新增 skill-rules.md）
 
 ## 经验教训
 _(待积累)_

@@ -11,8 +11,9 @@
 
 1. `team-rules/security-rules.md` ← 安全第一，确认边界
 2. `team-rules/general-rules.md` ← 确认角色和通信协议
-3. `team-rules/training-rules.md` ← 确认训练流程
-4. `agents/{name}/memory/training-memory.md` ← 回顾历史，从零开始
+3. `team-rules/skill-rules.md` ← 技能管理规则（依赖、版本、更新）
+4. `team-rules/training-rules.md` ← 确认训练流程
+5. `agents/{name}/memory/training-memory.md` ← 回顾历史，从零开始
 
 ## 2. 训练记忆本机制
 
