@@ -78,18 +78,23 @@ agents/{name}/
 ## 5. Git 规则
 
 ### 5.1 分支策略
-- `main`：稳定版本，只有 Jerry 可以直接 push
-- `feat/{agent-name}/{feature}`：功能分支（训练用）
-- 合并到 main 前需 Jerry 确认
+- `main`：唯一分支，所有提交直接到 main
+- 不使用 `feat/` 分支，降低管理成本
+- 需要回滚时使用 `git revert`，不使用 force push
 
-### 5.2 不提交的内容
+### 5.2 提交约束
+- 所有提交由 Jerry 的会话发起（Jerry 是唯一 push 发起者）
+- 每个 agent 的训练成果通过独立 commit 记录
+- commit message 格式见第 3 节
+
+### 5.3 不提交的内容
 - `*.sqlite`（数据库文件）
 - `*.jsonl`（会话记录，进备份仓库）
 - `config/openclaw.json`（含敏感信息）
 - `state/`（运行时状态）
 - `.openclaw/`（运行时数据）
 
-### 5.3 必须提交的内容
+### 5.4 必须提交的内容
 - `team-rules/` 所有文件
 - `agents/{name}/agent/` 配置
 - `agents/{name}/workspace/skills/` 技能文件
@@ -104,4 +109,4 @@ agents/{name}/
 
 ---
 
-*每次提交都是一个检查点，确保训练成果可追溯、可恢复*
+*GitHub 提交规则 v2.0 — 2026-04-11 更新 — 每次提交都是一个检查点*

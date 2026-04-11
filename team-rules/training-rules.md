@@ -7,12 +7,12 @@
 
 ## 1. 训练前必读
 
-每次训练开始前，**必须**按顺序读取：
+每次训练开始前，**必须**严格按以下顺序读取：
 
-1. `team-rules/training-rules.md`（本文件）
-2. `agents/{name}/memory/training-memory.md`（本 agent 训练记忆）
-3. `team-rules/general-rules.md`（通用规则，确认角色和通信协议）
-4. `team-rules/security-rules.md`（安全规则，确认边界）
+1. `team-rules/security-rules.md` ← 安全第一，确认边界
+2. `team-rules/general-rules.md` ← 确认角色和通信协议
+3. `team-rules/training-rules.md` ← 确认训练流程
+4. `agents/{name}/memory/training-memory.md` ← 回顾历史，从零开始
 
 ## 2. 训练记忆本机制
 
@@ -85,7 +85,34 @@ agents/{name}/memory/training-memory.md
 - 异常场景处理
 - 汇报流程验证
 
-## 5. 训练成果验收
+### Phase 3: 角色训练 — 验收标准
+- ✅ 能准确理解自身职责边界，不越权操作
+- ✅ 能正确解读 Jerry 的任务分派，明确 P0/P1/P2 含义
+- ✅ 能按通信格式规范汇报结果
+- ✅ 遇到超出职责范围的任务，能识别并上报 Jerry
+
+### Phase 4: 协作演练 — 验收标准
+- ✅ 能通过 Jerry 协调完成跨 agent 任务
+- ✅ 能正确处理任务依赖关系（如：合同审批需要项目信息）
+- ✅ 异常场景不崩溃，按错误处理机制执行
+- ✅ 能识别 P0 紧急任务并立即响应
+
+## 5. 训练失败处理
+
+### 5.1 重试机制
+- Agent 训练卡住时，自动重试 3 次（间隔递增）
+- 3 次重试后仍卡住 → 标记为"训练阻塞"，记录原因，汇报给 Jerry
+
+### 5.2 Jerry 介入
+- Jerry 收到训练阻塞报告后，分析原因
+- Jerry 尝试 3 种不同方案帮助该 agent 突破
+- 3 种方案均无效 → 上报 Rex，请求人工干预
+
+### 5.3 跳过策略
+- 如果某个训练步骤非阻塞核心功能，经 Jerry 确认后可跳过
+- 跳过的步骤必须记录到 training-memory.md，标注"已跳过 - 原因"
+
+## 6. 训练成果验收
 
 - ✅ 训练记忆本已更新
 - ✅ 专属技能可正常使用
@@ -96,4 +123,4 @@ agents/{name}/memory/training-memory.md
 
 ---
 
-*训练不是从零开始，而是基于记忆的持续进化*
+*训练规则 v2.0 — 2026-04-11 更新 — 不是从零开始，而是基于记忆的持续进化*
