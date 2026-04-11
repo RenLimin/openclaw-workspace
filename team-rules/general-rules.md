@@ -131,7 +131,14 @@ Agent 执行失败
 - 对外文件（邮件、报告）使用正式中文
 - 内部记录简洁明了，不说废话
 
-## 7. 文件命名规范
+## 7. Gateway 调试标志
+
+### 7.1 `allowInsecureAuth`
+- `gateway.controlUi.allowInsecureAuth = true` **仅用于本地调试**
+- 生产环境或暴露到网络时应关闭
+- 当前状态：✅ 本地使用，可保留
+
+## 8. 文件命名规范
 - 日期格式: `YYYY-MM-DD`
 - 日志文件: `YYYY-MM-DD.md`
 - 报告文件: `{类型}_{YYYYMMDD}_{版本}.md`

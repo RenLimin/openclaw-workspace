@@ -1,40 +1,46 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - 本地工具配置
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## 网络代理
 
-## What Goes Here
+| 项目 | 值 | 备注 |
+|------|-----|------|
+| 备份代理端口 | 7897 | 默认关闭，仅在直连失败时启用 |
+| Git 代理 | `http://127.0.0.1:7897` | 当前已配置 |
+| 系统代理 | `127.0.0.1:7897` | 已配置但未启用 |
 
-Things like:
+## Gateway
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+| 项目 | 值 |
+|------|-----|
+| 地址 | `ws://127.0.0.1:18789` |
+| Control UI | `http://127.0.0.1:18789/` |
+| 绑定 | loopback |
+| 认证 | token |
 
-## Examples
+## Git 配置
 
-```markdown
-### Cameras
+| 项目 | 值 |
+|------|-----|
+| 仓库 | `RenLimin/openclaw-workspace` |
+| 备份仓库 | `RenLimin/openclaw-backup` |
+| 用户 | Jerry <jerry@openclaw> |
+| 代理 | `http://127.0.0.1:7897` |
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+## GitHub
 
-### SSH
+| 项目 | 值 |
+|------|-----|
+| 用户 | RenLimin |
+| Token 位置 | Keychain: `gh:github.com` |
+| Token 类型 | PAT (gho_) |
 
-- home-server → 192.168.1.100, user: admin
+## Keychain 条目
 
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+| 条目名 | 用途 | 状态 |
+|--------|------|------|
+| `gh:github.com` | GitHub CLI 认证 | ✅ 已配置 |
+| `openclaw-github` | OpenClaw 备份推送 | ✅ 已配置 |
 
 ---
 
-Add whatever helps you do your job. This is your cheat sheet.
+_本地配置速查表，随环境变化更新_
