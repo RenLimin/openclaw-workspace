@@ -59,7 +59,19 @@
 - **外部操作谨慎**: 发邮件/发推前确认
 - **trash > rm**: 可恢复优于永久删除
 
-### 2.3 通信规范
+### 2.3 文件操作规范
+
+- **工作区隔离**: 所有过程文件和临时文件仅允许在各自工作区域内
+  - Jerry: `~/.openclaw/workspace/`
+  - Ella: `~/.openclaw/agents/ella/workspace/`
+  - Oliver: `~/.openclaw/agents/oliver/workspace/`
+  - Aaron: `~/.openclaw/agents/aaron/workspace/`
+  - Iris: `~/.openclaw/agents/iris/workspace/`
+- **读写权限**: 除各自工作区域外，仅允许读写 `~/Downloads/`
+- **禁止**: 不得在系统目录、其他 Agent 目录、用户文档等位置创建临时文件
+- **清理义务**: 任务完成后清理各自工作区内的临时文件
+
+### 2.4 通信规范
 
 - **中文为主**: Rex 使用中文
 - **简洁明了**: 避免冗长解释
@@ -87,4 +99,4 @@
 
 ---
 
-_创建时间: 2026-04-11 | 更新时间: 2026-04-12 15:45 | 版本: v2.0_
+_创建时间: 2026-04-11 | 更新时间: 2026-04-12 18:04 | 版本: v2.1_

@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-12T09:19:16.303Z",
+  "entries": {
+    "memory:memory/2026-04-11.md:25:53": {
+      "key": "memory:memory/2026-04-11.md:25:53",
+      "path": "memory/2026-04-11.md",
+      "startLine": 25,
+      "endLine": 53,
+      "source": "memory",
+      "snippet": "- 创建 5 个 agent 独立目录结构: - jerry, ella, oliver, aaron, iris - 每个含: agent/, workspace/skills/, workspace/scripts/, sessions/, memory/, data/ - 初始化各 agent 配置文件 (config.json) - 初始化各 agent 训练记忆本 - 更新 MEMORY.md ## Phase 1 补充 (21:30) - Rex 确认并增强规则: - 优先级 P0/P1/P2 定义（紧急/重要/常规） - 错误处理: Agent 重试 3 次 → Jerry 重试 3 次 → 上报 Rex - 职责边界: OA=泛微OA, ONES=万事ONES - 安全规则强化: Keychain 命名规范、浏览器操作约束、生产数据定义 - 训练规则强化: 训练失败处理、Phase 3/4 验收标准、跳过策略 - GitHub 规则简化: 单 main 分支、去掉 feat 分支 - 训练前必读顺序: 安全 → 通用 → 技能 → 训练 → 记忆本 - 新增 skill-rules.md（技能管理规范）: - 技能为核心颗粒度，完整独立 - 每个技能必须有 DEPENDENCIES.md 依赖清单 - 每个技能必须有 _meta.json 元数据 - 外部技能每周更新检查（Cron 任务） - 已本地修改的外部技能: 检查上游 → 利弊分析 → Rex 审批 - 4 种技能分类: 域技能/共享工具/外",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9551244852794254,
+      "maxScore": 0.4913105091340946,
+      "firstRecalledAt": "2026-04-12T09:19:07.252Z",
+      "lastRecalledAt": "2026-04-12T09:19:16.303Z",
+      "queryHashes": [
+        "e6e74af54ea1",
+        "1e796f3ad134"
+      ],
+      "recallDays": [
+        "2026-04-12"
+      ],
+      "conceptTags": [
+        "workspace/skills",
+        "workspace/scripts",
+        "config.json",
+        "memory.md",
+        "p0/p1/p2",
+        "紧急/重要/常规",
+        "3/4",
+        "skill-rules.md"
+      ]
+    },
+    "memory:memory/2026-04-11.md:46:76": {
+      "key": "memory:memory/2026-04-11.md:46:76",
+      "path": "memory/2026-04-11.md",
+      "startLine": 46,
+      "endLine": 76,
+      "source": "memory",
+      "snippet": "- 已本地修改的外部技能: 检查上游 → 利弊分析 → Rex 审批 - 4 种技能分类: 域技能/共享工具/外部技能/本地技能 - 语义化版本管理 (SemVer) ## 待办 - [ ] Phase 2: 恢复共享技能到 workspace - [ ] Phase 2: 各 agent 专属技能训练 ## 已完成 - ✅ Gateway 配对 (CLI 设备批准) - ✅ denyCommands 修复 (移除无效 node 命令) - ✅ GitHub 推送成功 (10 个 commit) - ✅ 网络代理确认: Clash Verge 端口 7897 - ✅ 每周技能更新检查 Cron 创建 (每周六 09:30) - ✅ 系统环境配置: macOS 26.4.1, Office 365, 泛微OA, 万事ONES 等 ## 深度清理完成 (22:28) - ✅ 移除 3 个孤立 LaunchAgent 服务 (wake-recovery, wake, network-keepalive) - ✅ 清理 8 个旧配置文件备份 (.bak.1-4, .clobbered.*) - ✅ 移除空的 qqbot 目录 - ✅ 禁用 memory search (无 embedding provider，暂不需要) - ✅ 创建 workspace/skills/ 和 workspace/scripts/ 目录 (Phase 2 准备) - ✅ 5 个 agent 目录结构验证通过 - ✅ Doctor: 0 errors, shell completion c",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4852668440242276,
+      "maxScore": 0.4852668440242276,
+      "firstRecalledAt": "2026-04-12T09:19:16.303Z",
+      "lastRecalledAt": "2026-04-12T09:19:16.303Z",
+      "queryHashes": [
+        "1e796f3ad134"
+      ],
+      "recallDays": [
+        "2026-04-12"
+      ],
+      "conceptTags": [
+        "embedding",
+        "gateway",
+        "network",
+        "备份",
+        "网络",
+        "域技能/共享工具/外部技能/本地技能",
+        "26.4.1",
+        "wake-recovery"
+      ]
+    },
+    "memory:memory/2026-04-12.md:164:203": {
+      "key": "memory:memory/2026-04-12.md:164:203",
+      "path": "memory/2026-04-12.md",
+      "startLine": 164,
+      "endLine": 203,
+      "source": "memory",
+      "snippet": "6. **网络监控**: 请求日志 + API 调用等待 7. **环境隔离**: 每 Agent 独立 userDataDir **脚本**: `scripts/dynamic-browser-engine.py` (Playwright Async API) ## 14:37 - Agent 注册完成 ✅ **4 个 Agent 已成功注册到 OpenClaw 系统**: | Agent | 状态 | 目录 | 模型 | |-------|------|------|------| | **Jerry 🦞** | ✅ active (main) | `~/.openclaw/agents/main/` | bailian/qwen3.6-plus | | **Ella 🦊** | ✅ active | `~/.openclaw/agents/ella/` | bailian/qwen3.6-plus | | **Oliver 🐘** | ✅ active | `~/.openclaw/agents/oliver/` | bailian/qwen3.6-plus | | **Aaron 🦉** | ✅ active | `~/.openclaw/agents/aaron/` | bailian/qwen3.6-plus | | **Iris 🐦‍⬛** | ✅ active | `~/.openclaw/agents/iris/` | bailian/qwen3.6-plus | **注册命令**: `openclaw agents add {name}",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.47937005970817625,
+      "maxScore": 0.47937005970817625,
+      "firstRecalledAt": "2026-04-12T09:19:16.303Z",
+      "lastRecalledAt": "2026-04-12T09:19:16.303Z",
+      "queryHashes": [
+        "1e796f3ad134"
+      ],
+      "recallDays": [
+        "2026-04-12"
+      ],
+      "conceptTags": [
+        "网络",
+        "openclaw/agents/main",
+        "bailian/qwen3.6-plus",
+        "openclaw/agents/ella",
+        "openclaw/agents/oliver",
+        "openclaw/agents/aaron",
+        "openclaw/agents/iris",
+        "请求"
+      ]
+    },
+    "memory:memory/2026-04-12.md:59:93": {
+      "key": "memory:memory/2026-04-12.md:59:93",
+      "path": "memory/2026-04-12.md",
+      "startLine": 59,
+      "endLine": 93,
+      "source": "memory",
+      "snippet": "- 状态: channels.openclawwechat 已写入配置 ## 10:44 - 核心能力训练计划 v2.0 **5 项能力 + 1 项格式转换**: 1. 浏览器自动化 (Playwright 1.58.0) ✅ 技能已安装 2. PDF/图片解析 (Tesseract + PyMuPDF + 百炼视觉模型) ✅ 技能已安装 3. Excel 解析 (openpyxl + formulas) ✅ 技能已安装 4. Word 解析 (python-docx) ✅ 技能已安装 5. Office 制作 (python-pptx + xlsxwriter) ✅ 技能已安装 6. 格式转换 (LibreOffice 26.2.2) ⏳ 下载中 **Python 新增包**: python-pptx 1.0.2, formulas **ClawHub 新增技能**: playwright-browser-automation, pdf-ocr-extraction, excel-xlsx, excel-formula, word-docx, generate-excel, generate-word-docx, pptx-generator **完整训练计划**: `team-rules/training-proposals/2026-04-12-core-capabilities.md` ## 待办 - LibreOffice 安装完成后执行能力 6 测试 - 启动 Phase B 自主执行（5 项能力测试） - Rex 审阅训练计划后开始执行 ## 10:52",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4584778557905645,
+      "maxScore": 0.4584778557905645,
+      "firstRecalledAt": "2026-04-12T09:19:16.303Z",
+      "lastRecalledAt": "2026-04-12T09:19:16.303Z",
+      "queryHashes": [
+        "1e796f3ad134"
+      ],
+      "recallDays": [
+        "2026-04-12"
+      ],
+      "conceptTags": [
+        "channels.openclawwechat",
+        "v2.0",
+        "1.58.0",
+        "pdf/图片解析",
+        "python-docx",
+        "python-pptx",
+        "26.2.2",
+        "1.0.2"
+      ]
+    }
+  }
+}
