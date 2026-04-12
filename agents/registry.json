@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "updatedAt": "2026-04-12T14:37:00+08:00",
+  "updatedAt": "2026-04-12T15:36:00+08:00",
   "agents": {
     "jerry": {
       "name": "Jerry",
@@ -12,7 +12,8 @@
       "workspace": "~/.openclaw/workspace",
       "model": "bailian/qwen3.6-plus",
       "channels": ["wecom", "openclawwechat"],
-      "capabilities": ["任务分解", "团队协调", "错误处理", "技能管理"]
+      "capabilities": ["任务分解", "团队协调", "错误处理", "技能管理"],
+      "skills": ["self-improving", "proactive-agent-lite", "openclaw-memory", "context-scope-tags", "prompt-enhancer", "openclaw-skill-vetter", "code-interpreter", "openclaw-tavily-search", "websearch-free-skill", "summarize-pro", "ontology", "doc-learning", "brainstorming-tazio", "runesleo-systematic-debugging", "feedback-loop", "test-driven-development", "playwright-browser-automation", "pdf-ocr-extraction", "excel-xlsx", "excel-formula", "word-docx", "generate-excel", "generate-word-docx", "pptx-generator"]
     },
     "ella": {
       "name": "Ella",
@@ -53,14 +54,17 @@
     "iris": {
       "name": "Iris",
       "emoji": "🐦‍⬛",
-      "role": "辅助工作",
+      "role": "智能巡检与辅助工作专家 (Agent Loop)",
       "status": "active",
       "registered": true,
       "agentDir": "~/.openclaw/agents/iris",
       "workspace": "~/.openclaw/agents/iris/workspace",
       "model": "bailian/qwen3.6-plus",
-      "capabilities": ["邮件管理", "通知分发", "文档整理"],
-      "skills": ["email-management"]
+      "loopMode": true,
+      "loopInterval": 1800,
+      "capabilities": ["邮件管理", "智能巡检", "通知分发", "文档处理", "团队辅助"],
+      "skills": ["email-management", "proactive-agent-lite", "self-improving", "summarize-pro", "websearch-free-skill", "generate-word-docx", "generate-excel"],
+      "loopTasks": ["email-check", "system-monitor", "notification-dispatch", "document-organize", "log-maintenance"]
     }
   }
 }
