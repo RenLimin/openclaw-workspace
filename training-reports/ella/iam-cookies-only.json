@@ -1,0 +1,22 @@
+[
+  {
+    "name": "JSESSIONID",
+    "value": "134297879165D3176B3BAB62C880C168",
+    "domain": "iam.bangcle.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "x-access-token",
+    "value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmNzVhMGNiMi1hZDA5LTQ0NTktYjA1OS1kYjIzZDE1OGM3ZDciLCJpYXQiOjE3NzYwMDc3MjYsImlzcyI6IkJhbmdjbGUiLCJleHAiOjE3NzYwMTQ5MjYsIkxvZ2luSWQiOiJsaW1pbi5yZW4ifQ.u1yFVbS07hMGqbx7_ZJV4KEltGy7gPEcpzmPUKfia08",
+    "domain": "iam.bangcle.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]
