@@ -1,0 +1,158 @@
+[
+  {
+    "category": "浏览器自动化",
+    "operation": "系统登录",
+    "method": "浏览器",
+    "status": "✅ 已验证"
+  },
+  {
+    "category": "浏览器自动化",
+    "operation": "菜单导航",
+    "method": "浏览器",
+    "status": "✅ 可用"
+  },
+  {
+    "category": "浏览器自动化",
+    "operation": "页面数据提取",
+    "method": "浏览器+DOM",
+    "status": "✅ 可用"
+  },
+  {
+    "category": "浏览器自动化",
+    "operation": "截图",
+    "method": "浏览器",
+    "status": "✅ 可用"
+  },
+  {
+    "category": "浏览器自动化",
+    "operation": "表单填写",
+    "method": "浏览器",
+    "status": "✅ 可用"
+  },
+  {
+    "category": "浏览器自动化",
+    "operation": "按钮点击",
+    "method": "浏览器",
+    "status": "✅ 可用"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "搜索⌘+J我的工作台通知99+项目管理知识库管理测试管理工单管理流水线集成项目集管理产品管理资源管理效能管理版本管理工时审批帮助中心应用中心配置中心邀请成员立民任立民",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "我的工作台",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "项目管理知识库管理测试管理工单管理流水线集成项目集管理产品管理资源管理效能管理版本管理工时审批",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "项目管理知识库管理测试管理工单管理流水线集成项目集管理产品管理资源管理效能管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "项目管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "知识库管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "测试管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "工单管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "流水线集成",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "项目集管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "产品管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "资源管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "效能管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "版本管理",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "工时审批",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "应用中心",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "概览",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "仪表盘",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "筛选器",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  },
+  {
+    "category": "ONES 模块",
+    "operation": "工时",
+    "method": "浏览器自动化",
+    "status": "✅ 可访问"
+  }
+]
