@@ -1,8 +1,8 @@
 # 完整训练计划：核心能力构建
 
-> **版本**: v2.0 | **创建时间**: 2026-04-12 10:44 | **状态**: Phase A 方案已完成, Phase B 待执行
+> **版本**: v3.0 | **创建时间**: 2026-04-12 10:44 | **更新时间**: 2026-04-12 14:15 | **状态**: ✅ Phase A+B 全部完成
 >
-> **核心目标**: 5 项核心能力全部实现自动化
+> **核心目标**: 5 项核心能力全部实现自动化 + 浏览器 v3.0 动态页面支持
 
 ---
 
@@ -28,13 +28,15 @@
 | Playwright | playwright | 1.58.0 | ✅ |
 | 浏览器 | Chromium Headless Shell | 145.0.7632.6 | ✅ |
 | 浏览器 | Firefox | 146.0.1 | ✅ |
-| 文档转换 | LibreOffice | 26.2.2 | ⏳ 下载中 |
+| 文档转换 | LibreOffice | 26.2.2 | ✅ 已安装 |
+| 动态页面引擎 | Playwright Async | 1.58.0 | ✅ v3.0 完成 |
 
 ### 1.2 已安装 ClawHub 技能
 
 | 技能 | 版本 | 用途 | 评分 |
 |------|------|------|------|
 | playwright-browser-automation | 2.0.0 | 浏览器自动化 | 3.56 |
+| dynamic-browser-engine | 3.0.0 | 动态页面引擎 | ✅ 自制 |
 | pdf-ocr-extraction | 1.0.3 | PDF OCR 提取 | 3.54 |
 | excel-xlsx | 1.0.2 | Excel 解析 | 3.80 |
 | excel-formula | 2.0.1 | Excel 公式处理 | 3.58 |
@@ -185,15 +187,15 @@ def parse_excel(file_path):
 ### 能力 6：文档格式转换（LibreOffice）
 
 **负责 Agent**: 全局共享
-**状态**: ⏳ LibreOffice 下载中
+**状态**: ✅ 已完成 (5/5 通过)
 
 | 步骤 | 操作 | 预期输出 |
 |------|------|---------|
-| 6.1 | ⏳ LibreOffice 安装完成 | 命令行工具可用 |
-| 6.2 | 测试 doc → docx | 转换成功 |
-| 6.3 | 测试 xls → xlsx | 转换成功 |
-| 6.4 | 测试 PDF 导出 | PDF 生成 |
-| 6.5 | 创建转换脚本 | `scripts/doc-convert.sh` |
+| 6.1 | ✅ LibreOffice 安装完成 | LibreOffice 26.2.2.2 |
+| 6.2 | ✅ 测试 doc → docx | 转换成功 |
+| 6.3 | ✅ 测试 xls → xlsx | 转换成功 |
+| 6.4 | ✅ 测试 PDF 导出 | PDF 生成 (34KB) |
+| 6.5 | ✅ 创建转换脚本 | `scripts/capability-6-libreoffice.py` |
 
 ---
 
