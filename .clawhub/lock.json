@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "skills": {
+    "self-improving": {
+      "version": "1.2.16",
+      "installedAt": 1775956109160
+    },
+    "proactive-agent-lite": {
+      "version": "1.0.0",
+      "installedAt": 1775956116172
+    },
+    "openclaw-tavily-search": {
+      "version": "0.1.0",
+      "installedAt": 1775956131146
+    },
+    "prompt-enhancer": {
+      "version": "1.0.1",
+      "installedAt": 1775956131406
+    },
+    "openclaw-skill-vetter": {
+      "version": "1.0.0",
+      "installedAt": 1775956131485
+    },
+    "openclaw-memory": {
+      "version": "1.0.0",
+      "installedAt": 1775956133110
+    },
+    "websearch-free-skill": {
+      "version": "0.1.1",
+      "installedAt": 1775956134661
+    },
+    "claw-shell": {
+      "version": "1.0.0",
+      "installedAt": 1775956135680
+    },
+    "context-scope-tags": {
+      "version": "0.2.0",
+      "installedAt": 1775956136709
+    },
+    "runesleo-systematic-debugging": {
+      "version": "3.0.0",
+      "installedAt": 1775956147242
+    },
+    "imbeasting-test-driven-development": {
+      "version": "1.0.0",
+      "installedAt": 1775956148802
+    },
+    "ontology": {
+      "version": "1.0.4",
+      "installedAt": 1775956149003
+    },
+    "feedback-loop": {
+      "version": "1.0.0",
+      "installedAt": 1775956149888
+    },
+    "summarize-pro": {
+      "version": "1.0.0",
+      "installedAt": 1775956164331
+    }
+  }
+}
