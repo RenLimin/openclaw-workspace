@@ -1,46 +1,66 @@
 {
-  "version": "2.0.0",
-  "updated_at": "2026-04-11",
+  "version": "2.0",
+  "updatedAt": "2026-04-12T14:37:00+08:00",
   "agents": {
     "jerry": {
+      "name": "Jerry",
       "emoji": "🦞",
-      "status": "training",
-      "capabilities": ["任务协调", "进度汇总", "冲突处理"],
-      "skills": [],
-      "current_load": 0,
-      "last_active": null
+      "role": "主代理 & 团队协调员",
+      "status": "active",
+      "registered": true,
+      "agentDir": "~/.openclaw/agents/main",
+      "workspace": "~/.openclaw/workspace",
+      "model": "bailian/qwen3.6-plus",
+      "channels": ["wecom", "openclawwechat"],
+      "capabilities": ["任务分解", "团队协调", "错误处理", "技能管理"]
     },
     "ella": {
+      "name": "Ella",
       "emoji": "🦊",
-      "status": "initializing",
+      "role": "合同管理",
+      "status": "active",
+      "registered": true,
+      "agentDir": "~/.openclaw/agents/ella",
+      "workspace": "~/.openclaw/agents/ella/workspace",
+      "model": "bailian/qwen3.6-plus",
       "capabilities": ["合同审批", "OA流程", "合同义务提取"],
-      "skills": [],
-      "current_load": 0,
-      "last_active": null
+      "skills": ["oa-approval", "contract-management"]
     },
     "oliver": {
+      "name": "Oliver",
       "emoji": "🐘",
-      "status": "initializing",
-      "capabilities": ["ONES操作", "项目进度", "风险预警"],
-      "skills": [],
-      "current_load": 0,
-      "last_active": null
+      "role": "项目管理",
+      "status": "active",
+      "registered": true,
+      "agentDir": "~/.openclaw/agents/oliver",
+      "workspace": "~/.openclaw/agents/oliver/workspace",
+      "model": "bailian/qwen3.6-plus",
+      "capabilities": ["ONES操作", "项目跟踪", "里程碑管理"],
+      "skills": ["ones-integration"]
     },
     "aaron": {
+      "name": "Aaron",
       "emoji": "🦉",
-      "status": "initializing",
-      "capabilities": ["报告分析", "统计汇总", "经营计划"],
-      "skills": [],
-      "current_load": 0,
-      "last_active": null
+      "role": "经营计划",
+      "status": "active",
+      "registered": true,
+      "agentDir": "~/.openclaw/agents/aaron",
+      "workspace": "~/.openclaw/agents/aaron/workspace",
+      "model": "bailian/qwen3.6-plus",
+      "capabilities": ["经营分析", "预算编制", "报表生成"],
+      "skills": ["business-analysis"]
     },
     "iris": {
+      "name": "Iris",
       "emoji": "🐦‍⬛",
-      "status": "initializing",
-      "capabilities": ["邮件管理", "文档整理", "通知分发"],
-      "skills": [],
-      "current_load": 0,
-      "last_active": null
+      "role": "辅助工作",
+      "status": "active",
+      "registered": true,
+      "agentDir": "~/.openclaw/agents/iris",
+      "workspace": "~/.openclaw/agents/iris/workspace",
+      "model": "bailian/qwen3.6-plus",
+      "capabilities": ["邮件管理", "通知分发", "文档整理"],
+      "skills": ["email-management"]
     }
   }
 }
