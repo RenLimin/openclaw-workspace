@@ -1,72 +1,123 @@
-# Agent 创建框架 v1.0
+# Agent 创建框架 v2.0
 
-> **设计目标**: 标准化、自动化、可复用的 Agent 创建流程
+> **设计原则**：标准化、自动化、可复用、可验证
 > 
-> **适用范围**: 新增 Agent 的完整生命周期管理
+> **适用范围**：新增 Agent 的完整生命周期管理（创建 → 训练 → 部署 → 运维）
+>
+> **参考**：技能训练框架 (`skill-training-framework.md`)
 
 ---
 
-## 一、现状分析
+## 一、Agent 生命周期
 
-### 1.1 已创建的 Agent
-
-| Agent | 目录 | 注册状态 | 文件完整性 |
-|-------|------|---------|-----------|
-| **Jerry 🦞** | `~/.openclaw/agents/main/` | ✅ 已注册 (main) | ✅ 完整 |
-| **Ella 🦊** | `~/.openclaw/agents/ella/` | ❌ 未注册 | ✅ 完整 |
-| **Oliver 🐘** | `~/.openclaw/agents/oliver/` | ❌ 未注册 | ✅ 完整 |
-| **Aaron 🦉** | `~/.openclaw/agents/aaron/` | ❌ 未注册 | ✅ 完整 |
-| **Iris 🐦‍⬛** | `~/.openclaw/agents/iris/` | ❌ 未注册 | ✅ 完整 |
-
-### 1.2 问题
-
-- **未注册**: 4 个 Agent 未在 OpenClaw 系统中注册
-- **手动创建**: 目录结构为手动创建，无标准化流程
-- **无模板**: 每次创建需要重复编写相同文件
-- **无测试**: 创建后无自动化验证
-
----
-
-## 二、Agent 创建标准流程
-
-### 2.1 推荐方式：使用 `openclaw agents add`
-
-```bash
-# 交互式创建
-openclaw agents add ella \
-    --agent-dir ~/.openclaw/agents/ella \
-    --workspace ~/.openclaw/agents/ella/workspace \
-    --model bailian/qwen3.6-plus \
-    --bind wecom:default
-
-# 非交互式创建
-openclaw agents add oliver \
-    --agent-dir ~/.openclaw/agents/oliver \
-    --workspace ~/.openclaw/agents/oliver/workspace \
-    --model bailian/qwen3.6-plus \
-    --non-interactive
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Agent 生命周期                                │
+│                                                                 │
+│  Phase 0: 规划     Phase 1: 创建     Phase 2: 训练               │
+│  ┌────────────┐   ┌────────────┐   ┌────────────┐              │
+│  │ 需求定义   │ → │ 目录结构   │ → │ 环境熟悉   │              │
+│  │ 角色定位   │   │ 文件生成   │   │ 技能测试   │              │
+│  │ 职责划分   │   │ 系统注册   │   │ 领域训练   │              │
+│  │ 技能规划   │   │ 路由配置   │   │ 实战演练   │              │
+│  └────────────┘   └────────────┘   └────────────┘              │
+│         │              │              │                         │
+│         ▼              ▼              ▼                         │
+│  Phase 3: 验证     Phase 4: 部署     Phase 5: 运维               │
+│  ┌────────────┐   ┌────────────┐   ┌────────────┐              │
+│  │ 功能验证   │ → │ 正式上线   │ → │ 健康监控   │              │
+│  │ 安全扫描   │   │ 消息路由   │   │ 日志审计   │              │
+│  │ 性能测试   │   │ 外部接入   │   │ 策略优化   │              │
+│  │ 文档完善   │   │ 备份配置   │   │ 版本管理   │              │
+│  └────────────┘   └────────────┘   └────────────┘              │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-### 2.2 最小化 Agent 结构
+---
+
+## 二、Phase 0: 规划阶段
+
+### 2.1 需求定义模板
+
+```markdown
+# Agent 需求文档: {AgentName}
+
+## 基本信息
+- **名称**: {AgentName}
+- **Emoji**: {Emoji}
+- **角色**: {角色描述}
+- **优先级**: P0/P1/P2
+
+## 核心职责
+1. {职责 1}
+2. {职责 2}
+3. {职责 3}
+
+## 外部系统依赖
+| 系统 | 用途 | 接入方式 | 状态 |
+|------|------|---------|------|
+| {系统名} | {用途} | {API/SDK/人工} | ⏳/✅ |
+
+## 专属技能规划
+| 技能 | 来源 | 依赖 | 优先级 |
+|------|------|------|--------|
+| {技能名} | ClawHub/手动 | {依赖项} | P0/P1/P2 |
+
+## 协作关系
+- **上游**: 从哪个 Agent 接收任务
+- **下游**: 向哪个 Agent 传递结果
+- **协调**: Jerry (主代理)
+
+## 验收标准
+- [ ] 标准 1
+- [ ] 标准 2
+- [ ] 标准 3
+```
+
+### 2.2 职责划分原则
+
+| 原则 | 说明 | 示例 |
+|------|------|------|
+| **高内聚** | 每个 Agent 专注一个领域 | Ella 只做合同相关 |
+| **低耦合** | Agent 间通过 Jerry 协调 | 不直接互相调用 |
+| **可替代** | 职责可独立替换 | 换人不换流程 |
+| **可扩展** | 预留技能扩展接口 | 新技能可随时添加 |
+
+---
+
+## 三、Phase 1: 创建阶段
+
+### 3.1 标准目录结构
 
 ```
 ~/.openclaw/agents/{name}/
 ├── agent/
-│   └── config.json          # Agent 配置（必填）
+│   └── config.json              # Agent 配置（必填）
 ├── memory/
-│   ├── training-memory.md   # 训练记忆
-│   └── YYYY-MM-DD.md        # 每日日志
+│   ├── training-memory.md       # 训练记忆
+│   ├── 2026-04-12.md           # 每日日志
+│   └── heartbeat-state.json    # 心跳状态 (可选)
 └── workspace/
-    ├── SOUL.md              # 角色定义
-    ├── USER.md              # 用户信息
-    ├── AGENTS.md            # 团队架构
-    ├── TOOLS.md             # 工具配置
-    ├── MEMORY.md            # 长期记忆
-    ├── skills/              # 专属技能
-    └── scripts/             # 自动化脚本
+    ├── SOUL.md                  # 角色定义
+    ├── USER.md                  # 用户信息
+    ├── AGENTS.md                # 团队架构
+    ├── TOOLS.md                 # 工具配置
+    ├── MEMORY.md                # 长期记忆
+    ├── IDENTITY.md              # 身份标识 (自动生成)
+    ├── HEARTBEAT.md             # 心跳配置 (自动生成)
+    ├── skills/                  # 专属技能目录
+    │   ├── <skill-name>/
+    │   │   ├── SKILL.md
+    │   │   ├── _meta.json
+    │   │   └── ...
+    │   └── ...
+    └── scripts/                 # 自动化脚本
+        └── *.sh / *.py
 ```
 
-### 2.3 配置文件模板
+### 3.2 文件模板库
+
+所有模板存放在 `team-rules/templates/agent/` 目录下。
 
 #### config.json
 ```json
@@ -83,7 +134,7 @@ openclaw agents add oliver \
 }
 ```
 
-#### SOUL.md 模板
+#### SOUL.md
 ```markdown
 # SOUL.md - {AgentName} {Emoji}
 
@@ -100,38 +151,113 @@ openclaw agents add oliver \
 ## 工作原则
 - {原则 1}
 - {原则 2}
+- {原则 3}
 
 ## 外部系统
 - **系统名称** — 用途
 
 ## 升级规则
-- P0（紧急）: ...
-- P1（24h）: ...
-- P2（常规）: ...
+- P0（紧急）: 立即上报 Jerry
+- P1（24h）: 24h 内处理
+- P2（常规）: 按常规流程处理
 ```
 
----
+#### USER.md
+```markdown
+# USER.md - About Rex
 
-## 三、自动化创建脚本
+- **Name**: Rex
+- **GitHub**: RenLimin
+- **Timezone**: Asia/Shanghai (GMT+8)
+- **语言**: 中文
 
-### 3.1 Agent 创建器
+## 对 {AgentName} 的期望
+- 工作准确及时
+- 异常情况及时上报
+- 保密原则
+```
+
+#### AGENTS.md
+```markdown
+# AGENTS.md - {AgentName} 工作区
+
+## 团队架构
+
+| 智能体 | 职责 | Emoji |
+|--------|------|-------|
+| Jerry | 主代理 & 团队协调员 | 🦞 |
+| Ella | 合同管理 (含 OA 审批) | 🦊 |
+| Oliver | 项目管理 (含 ONES 操作) | 🐘 |
+| Aaron | 经营计划 | 🦉 |
+| Iris | 辅助工作 (含 邮件管理) | 🐦‍⬛ |
+
+## 技能清单
+| 技能 | 版本 | 状态 |
+|------|------|------|
+| {技能名} | {版本} | ✅/⏳ |
+
+## 工作区路径
+- 技能: `~/.openclaw/agents/{name}/workspace/skills/`
+- 脚本: `~/.openclaw/agents/{name}/workspace/scripts/`
+- 记忆: `~/.openclaw/agents/{name}/memory/`
+
+## 团队规则
+遵守 `~/.openclaw/workspace/team-rules/` 下所有规则。
+```
+
+#### TOOLS.md
+```markdown
+# TOOLS.md - {AgentName} 工具配置
+
+## Python 环境
+| 包 | 版本 | 状态 |
+|----|------|------|
+| python3 | 3.10.6 | ✅ |
+
+## 外部系统
+| 系统 | 状态 | 配置项 |
+|------|------|--------|
+| {系统名} | ⏳/✅ | {配置项} |
+
+## 笔记
+- {备注信息}
+```
+
+#### MEMORY.md
+```markdown
+# MEMORY.md - {AgentName} 长期记忆
+
+## 训练状态
+- {日期}: 基础架构搭建完成
+- 待完成: Phase 2 技能训练
+
+## 关键事件
+- {事件记录}
+
+## 经验教训
+- {经验记录}
+```
+
+### 3.3 自动化创建脚本
 
 ```bash
 #!/bin/bash
 # scripts/agent-creator.sh
-# 自动化 Agent 创建脚本
+# 自动化 Agent 创建脚本 v2.0
 
 set -euo pipefail
 
 AGENT_NAME="${1:?Usage: agent-creator.sh <name> <emoji> <role>}"
 AGENT_EMOJI="${2:?Emoji}"
 AGENT_ROLE="${3:?Role}"
+MODEL="${4:-bailian/qwen3.6-plus}"
 
 AGENT_DIR="$HOME/.openclaw/agents/$AGENT_NAME"
 WORKSPACE_DIR="$AGENT_DIR/workspace"
 MEMORY_DIR="$AGENT_DIR/memory"
 SKILLS_DIR="$WORKSPACE_DIR/skills"
 SCRIPTS_DIR="$WORKSPACE_DIR/scripts"
+TEMPLATES_DIR="$HOME/.openclaw/workspace/team-rules/templates/agent"
 
 echo "🤖 创建 Agent: $AGENT_NAME ($AGENT_EMOJI)"
 
@@ -143,8 +269,10 @@ mkdir -p "$MEMORY_DIR"
 mkdir -p "$SKILLS_DIR"
 mkdir -p "$SCRIPTS_DIR"
 
-# 2. 创建 config.json
-echo "⚙️ 创建配置文件..."
+# 2. 从模板生成文件
+echo "📝 生成配置文件..."
+
+# config.json
 cat > "$AGENT_DIR/agent/config.json" << EOF
 {
   "name": "$AGENT_NAME",
@@ -155,12 +283,11 @@ cat > "$AGENT_DIR/agent/config.json" << EOF
   "sessions": "$AGENT_DIR/sessions",
   "memory": "$MEMORY_DIR",
   "teamRules": "~/.openclaw/workspace/team-rules/",
-  "model": "bailian/qwen3.6-plus"
+  "model": "$MODEL"
 }
 EOF
 
-# 3. 创建 SOUL.md
-echo "🧠 创建 SOUL.md..."
+# SOUL.md
 cat > "$WORKSPACE_DIR/SOUL.md" << EOF
 # SOUL.md - $AGENT_NAME $AGENT_EMOJI
 
@@ -183,8 +310,7 @@ cat > "$WORKSPACE_DIR/SOUL.md" << EOF
 - P2: 常规处理
 EOF
 
-# 4. 创建 USER.md
-echo "👤 创建 USER.md..."
+# USER.md
 cat > "$WORKSPACE_DIR/USER.md" << EOF
 # USER.md - About Rex
 
@@ -198,8 +324,7 @@ cat > "$WORKSPACE_DIR/USER.md" << EOF
 - 异常情况及时上报
 EOF
 
-# 5. 创建 AGENTS.md
-echo "👥 创建 AGENTS.md..."
+# AGENTS.md
 cat > "$WORKSPACE_DIR/AGENTS.md" << EOF
 # AGENTS.md - $AGENT_NAME 工作区
 
@@ -212,6 +337,7 @@ cat > "$WORKSPACE_DIR/AGENTS.md" << EOF
 | Oliver | 项目管理 | 🐘 |
 | Aaron | 经营计划 | 🦉 |
 | Iris | 辅助工作 | 🐦‍⬛ |
+| $AGENT_NAME | $AGENT_ROLE | $AGENT_EMOJI |
 
 ## 技能清单
 | 技能 | 版本 | 状态 |
@@ -227,8 +353,7 @@ cat > "$WORKSPACE_DIR/AGENTS.md" << EOF
 遵守 \`~/.openclaw/workspace/team-rules/\` 下所有规则。
 EOF
 
-# 6. 创建 TOOLS.md
-echo "🛠️ 创建 TOOLS.md..."
+# TOOLS.md
 cat > "$WORKSPACE_DIR/TOOLS.md" << EOF
 # TOOLS.md - $AGENT_NAME 工具配置
 
@@ -241,8 +366,7 @@ cat > "$WORKSPACE_DIR/TOOLS.md" << EOF
 - 待添加
 EOF
 
-# 7. 创建 MEMORY.md
-echo "📝 创建 MEMORY.md..."
+# MEMORY.md
 cat > "$WORKSPACE_DIR/MEMORY.md" << EOF
 # MEMORY.md - $AGENT_NAME 长期记忆
 
@@ -251,8 +375,7 @@ cat > "$WORKSPACE_DIR/MEMORY.md" << EOF
 - 待完成: Phase 2 技能训练
 EOF
 
-# 8. 创建 training-memory.md
-echo "📚 创建 training-memory.md..."
+# training-memory.md
 cat > "$MEMORY_DIR/training-memory.md" << EOF
 # Training Memory - $AGENT_NAME
 
@@ -260,12 +383,12 @@ cat > "$MEMORY_DIR/training-memory.md" << EOF
 - $(date +%Y-%m-%d): Agent 创建完成
 EOF
 
-# 9. 注册到 OpenClaw
+# 3. 注册到 OpenClaw
 echo "🔗 注册到 OpenClaw..."
 openclaw agents add "$AGENT_NAME" \
     --agent-dir "$AGENT_DIR" \
     --workspace "$WORKSPACE_DIR" \
-    --model "bailian/qwen3.6-plus" \
+    --model "$MODEL" \
     --non-interactive 2>/dev/null || echo "⚠️ 注册失败，可稍后手动注册"
 
 echo ""
@@ -280,12 +403,12 @@ echo "  3. 配置外部系统接入"
 echo "  4. 开始 Phase 2 训练"
 ```
 
-### 3.2 Agent 验证脚本
+### 3.4 验证脚本
 
 ```bash
 #!/bin/bash
 # scripts/agent-validator.sh
-# Agent 创建验证
+# Agent 创建验证 v2.0
 
 AGENT_NAME="${1:?Usage: agent-validator.sh <name>}"
 AGENT_DIR="$HOME/.openclaw/agents/$AGENT_NAME"
@@ -309,13 +432,25 @@ check() {
     fi
 }
 
+check_dir() {
+    local desc="$1"
+    local path="$2"
+    if [ -d "$path" ]; then
+        echo "  ✅ $desc"
+        ((PASS++))
+    else
+        echo "  ❌ $desc (缺失: $path)"
+        ((FAIL++))
+    fi
+}
+
 echo "=== 目录结构 ==="
-[ -d "$AGENT_DIR" ] && echo "  ✅ 主目录" || echo "  ❌ 主目录"
-[ -d "$AGENT_DIR/agent" ] && echo "  ✅ agent/" || echo "  ❌ agent/"
-[ -d "$WORKSPACE_DIR" ] && echo "  ✅ workspace/" || echo "  ❌ workspace/"
-[ -d "$AGENT_DIR/memory" ] && echo "  ✅ memory/" || echo "  ❌ memory/"
-[ -d "$WORKSPACE_DIR/skills" ] && echo "  ✅ skills/" || echo "  ❌ skills/"
-[ -d "$WORKSPACE_DIR/scripts" ] && echo "  ✅ scripts/" || echo "  ❌ scripts/"
+check_dir "主目录" "$AGENT_DIR"
+check_dir "agent/" "$AGENT_DIR/agent"
+check_dir "workspace/" "$WORKSPACE_DIR"
+check_dir "memory/" "$AGENT_DIR/memory"
+check_dir "skills/" "$WORKSPACE_DIR/skills"
+check_dir "scripts/" "$WORKSPACE_DIR/scripts"
 
 echo ""
 echo "=== 核心文件 ==="
@@ -352,143 +487,322 @@ fi
 
 ---
 
-## 四、Agent 注册与绑定
+## 四、Phase 2: 训练阶段
 
-### 4.1 注册现有 Agent
+> **核心原则**：与技能训练框架一致，采用 Phase A (方案生成) → Rex 审阅 → Phase B (自主执行) 模型
 
-```bash
-# 注册 Ella
-openclaw agents add ella \
-    --agent-dir ~/.openclaw/agents/ella \
-    --workspace ~/.openclaw/agents/ella/workspace \
-    --model bailian/qwen3.6-plus \
-    --non-interactive
+### 4.1 训练流程
 
-# 注册 Oliver
-openclaw agents add oliver \
-    --agent-dir ~/.openclaw/agents/oliver \
-    --workspace ~/.openclaw/agents/oliver/workspace \
-    --model bailian/qwen3.6-plus \
-    --non-interactive
-
-# 注册 Aaron
-openclaw agents add aaron \
-    --agent-dir ~/.openclaw/agents/aaron \
-    --workspace ~/.openclaw/agents/aaron/workspace \
-    --model bailian/qwen3.6-plus \
-    --non-interactive
-
-# 注册 Iris
-openclaw agents add iris \
-    --agent-dir ~/.openclaw/agents/iris \
-    --workspace ~/.openclaw/agents/iris/workspace \
-    --model bailian/qwen3.6-plus \
-    --non-interactive
+```
+新 Agent
+   │
+   ▼
+┌─────────────────────────┐
+│ Phase A: 方案生成        │
+│ - 分析训练目标           │
+│ - 检查环境依赖           │
+│ - 生成训练计划           │
+│ - 提交 Rex 审阅          │
+└─────────────────────────┘
+   │
+   ▼
+Rex 审阅通过？
+   ╱          ╲
+  是            否 → 修改方案
+  │
+  ▼
+┌─────────────────────────┐
+│ Phase B: 自主执行        │
+│ - 环境熟悉 (30min)       │
+│ - 技能测试 (1h)          │
+│ - 领域训练 (2h)          │
+│ - 实战演练 (1h)          │
+│ - 复盘优化 (30min)       │
+└─────────────────────────┘
+   │
+   ▼
+训练完成 → 验证 → 部署
 ```
 
-### 4.2 路由绑定
+### 4.2 训练内容清单
+
+| 阶段 | 内容 | 时长 | 验收标准 |
+|------|------|------|---------|
+| **环境熟悉** | 认识技能目录、检查依赖 | 30min | 能列出所有已安装技能 |
+| **技能测试** | 逐个测试 L0-L3 技能 | 1h | 每个技能执行 1 次成功 |
+| **领域训练** | 执行领域专属任务 | 2h | 完成训练手册全部场景 |
+| **实战演练** | 端到端任务流程 | 1h | 独立完成完整工作流 |
+| **复盘优化** | self-improving 复盘 | 30min | 写入经验教训到 memory |
+
+### 4.3 验证标准
+
+| 验证项 | 方法 | 通过标准 |
+|--------|------|---------|
+| 目录完整性 | `agent-validator.sh` | 所有文件存在 |
+| 注册状态 | `openclaw agents list` | Agent 在列表中 |
+| 技能安装 | `openclaw skills check` | 无缺失依赖 |
+| 功能测试 | 执行测试脚本 | 通过率 100% |
+| 路由配置 | `openclaw agents bindings` | 路由正确 |
+
+---
+
+## 五、Phase 3: 验证阶段
+
+### 5.1 功能验证
 
 ```bash
-# 绑定企业微信到 Jerry
-openclaw agents bind --agent jerry --bind wecom:default
+# 1. 验证 Agent 注册
+openclaw agents list | grep {name}
 
-# 绑定 ClawChat 到 Jerry
-openclaw agents bind --agent jerry --bind openclawwechat:default
+# 2. 验证工作区
+ls ~/.openclaw/agents/{name}/workspace/
+
+# 3. 验证技能
+openclaw skills check
+
+# 4. 验证路由
+openclaw agents bindings
+```
+
+### 5.2 安全验证
+
+| 检查项 | 方法 | 通过标准 |
+|--------|------|---------|
+| 凭证隔离 | 检查 Keychain 条目 | 凭证仅对对应 Agent 可见 |
+| 权限最小化 | 检查技能权限 | 无多余权限 |
+| 日志审计 | 检查 memory 日志 | 所有操作有记录 |
+| 网络代理 | 检查代理配置 | 符合 network-rules.md |
+
+### 5.3 性能验证
+
+| 检查项 | 方法 | 通过标准 |
+|--------|------|---------|
+| 响应时间 | 发送测试消息 | < 30s 响应 |
+| 内存使用 | `ps aux | grep {name}` | 无异常增长 |
+| 磁盘使用 | `du -sh ~/.openclaw/agents/{name}/` | < 100MB |
+
+---
+
+## 六、Phase 4: 部署阶段
+
+### 6.1 路由配置
+
+```bash
+# 绑定 Channel 到 Agent
+openclaw agents bind --agent {name} --bind {channel}:{accountId}
+
+# 示例：绑定企业微信到 Jerry
+openclaw agents bind --agent jerry --bind wecom:default
 
 # 查看所有绑定
 openclaw agents bindings
 ```
 
----
+### 6.2 外部系统接入
 
-## 五、推荐技能与规则
+| 系统 | Agent | 配置项 | 状态 |
+|------|-------|--------|------|
+| 泛微 OA | Ella | external.oa | ⏳ |
+| 万事 ONES | Oliver | external.ones | ⏳ |
+| 网易邮箱 | Iris | external.email | ⏳ |
+| Office 365 | Iris | external.office365 | ⏳ |
 
-### 5.1 每个 Agent 必备
+### 6.3 备份配置
 
-| 技能/文件 | 用途 | 状态 |
-|----------|------|------|
-| SOUL.md | 角色定义 | ✅ 已创建 |
-| USER.md | 用户信息 | ✅ 已创建 |
-| AGENTS.md | 团队架构 | ✅ 已创建 |
-| TOOLS.md | 工具配置 | ✅ 已创建 |
-| MEMORY.md | 长期记忆 | ✅ 已创建 |
-| training-memory.md | 训练记忆 | ✅ 已创建 |
-
-### 5.2 共享规则
-
-所有 Agent 遵守 `~/.openclaw/workspace/team-rules/` 下的规则：
-
-| 规则文件 | 内容 |
-|---------|------|
-| general-rules.md | 通用行为准则 |
-| security-rules.md | 安全规范 |
-| training-rules.md | 训练规范 |
-| github-rules.md | Git 操作规范 |
-| skill-rules.md | 技能管理规则 |
-| network-rules.md | 网络代理规则 |
-| environment-config.md | 环境配置 |
-| skill-training-framework.md | 训练框架 |
-
-### 5.3 Agent 专属技能
-
-| Agent | 技能 | 说明 |
-|-------|------|------|
-| Ella 🦊 | oa-approval | OA 审批 |
-| Ella 🦊 | contract-management | 合同管理 |
-| Oliver 🐘 | ones-integration | ONES 操作 |
-| Aaron 🦉 | business-analysis | 经营分析 |
-| Iris 🐦‍⬛ | email-management | 邮件管理 |
+```bash
+# 确保 Agent 工作区在 Git 仓库中
+cd ~/.openclaw/workspace
+git add agents/registry.json
+git commit -m "feat: add {name} agent"
+git push
+```
 
 ---
 
-## 六、最佳实践
+## 七、Phase 5: 运维阶段
 
-### 6.1 命名规范
+### 7.1 健康监控
 
-- **Agent 名称**: 简短、易记、有意义 (如 Ella, Oliver)
-- **Emoji**: 唯一标识，用于视觉区分
-- **目录名**: 小写、无空格 (如 `ella`, `oliver`)
+```bash
+# 检查 Agent 状态
+openclaw agents list
 
-### 6.2 职责划分
+# 检查路由状态
+openclaw agents bindings
 
-- **高内聚**: 每个 Agent 专注一个领域
-- **低耦合**: Agent 间通过 Jerry 协调，不直接依赖
-- **可替代**: 每个 Agent 的职责可独立替换
+# 检查 Channel 状态
+openclaw channels status --probe
+```
 
-### 6.3 安全原则
+### 7.2 日志管理
 
-- **最小权限**: 每个 Agent 只有所需的最小权限
-- **凭证隔离**: 每个 Agent 的凭证独立存储
-- **操作审计**: 所有外部操作记录日志
+| 日志类型 | 位置 | 保留策略 |
+|---------|------|---------|
+| 每日日志 | `memory/YYYY-MM-DD.md` | 保留 90 天 |
+| 长期记忆 | `MEMORY.md` | 永久保留 |
+| 训练记忆 | `memory/training-memory.md` | 永久保留 |
+| 系统日志 | Gateway 日志 | 保留 30 天 |
 
-### 6.4 维护规范
+### 7.3 版本管理
 
-- **每日日志**: 记录在 `memory/YYYY-MM-DD.md`
-- **长期记忆**: 重要事件更新到 `MEMORY.md`
-- **技能更新**: 新技能添加到 AGENTS.md
-- **定期备份**: 工作区定期推送到 GitHub
+```bash
+# Agent 配置变更提交
+cd ~/.openclaw/workspace
+git add agents/{name}/
+git commit -m "chore({name}): update agent config"
+git push
+```
 
 ---
 
-## 七、执行计划
+## 八、Agent 注册表
 
-### 7.1 立即执行
+### 8.1 注册表结构
 
-| 步骤 | 操作 | 状态 |
+`~/.openclaw/workspace/agents/registry.json`
+
+```json
+{
+  "version": "2.0",
+  "updatedAt": "2026-04-12T14:37:00+08:00",
+  "agents": {
+    "{name}": {
+      "name": "{AgentName}",
+      "emoji": "{Emoji}",
+      "role": "{角色描述}",
+      "status": "active|inactive|training",
+      "registered": true,
+      "agentDir": "~/.openclaw/agents/{name}",
+      "workspace": "~/.openclaw/agents/{name}/workspace",
+      "model": "bailian/qwen3.6-plus",
+      "channels": ["wecom", "openclawwechat"],
+      "capabilities": ["能力 1", "能力 2"],
+      "skills": ["技能 1", "技能 2"]
+    }
+  }
+}
+```
+
+### 8.2 当前注册表
+
+| Agent | 状态 | 注册 | 渠道 | 技能数 |
+|-------|------|------|------|--------|
+| Jerry 🦞 | active | ✅ | wecom, openclawwechat | 17 |
+| Ella 🦊 | active | ✅ | — | 2 |
+| Oliver 🐘 | active | ✅ | — | 1 |
+| Aaron 🦉 | active | ✅ | — | 1 |
+| Iris 🐦‍⬛ | active | ✅ | — | 1 |
+
+---
+
+## 九、GitHub 提交规范
+
+### 9.1 Commit 格式
+
+```
+<type>(agent): <agent-name> - <description>
+
+Types:
+  feat     - 新功能/新 Agent
+  fix      - 修复问题
+  docs     - 文档更新
+  chore    - 配置变更
+  training - 训练相关
+
+Examples:
+  feat(agent): create ella - contract management agent
+  fix(agent): repair oliver workspace config
+  docs(agent): update jerry SOUL.md
+  chore(agent): register iris to OpenClaw
+  training(ella): phase 2 milestone 1 complete
+```
+
+### 9.2 提交粒度
+
+| 变更类型 | 提交频率 | 包含内容 |
+|---------|---------|---------|
+| Agent 创建 | 1 commit/Agent | 所有文件 + 注册 |
+| 技能安装 | 1 commit/技能 | SKILL.md + _meta.json + scripts |
+| 训练里程碑 | 1 commit/阶段 | memory 更新 + 测试记录 |
+| 配置变更 | 1 commit/变更 | 相关配置文件 |
+
+---
+
+## 十、最佳实践
+
+### 10.1 命名规范
+
+| 项目 | 规范 | 示例 |
 |------|------|------|
-| 1 | 创建 agent-creator.sh | ⏳ |
-| 2 | 创建 agent-validator.sh | ⏳ |
-| 3 | 注册 4 个 Agent 到 OpenClaw | ⏳ |
-| 4 | 验证所有 Agent | ⏳ |
+| Agent 名称 | 简短、易记、有意义 | Ella, Oliver |
+| Emoji | 唯一标识 | 🦊, 🐘 |
+| 目录名 | 小写、无空格 | `ella`, `oliver` |
+| 技能名 | kebab-case | `oa-approval`, `contract-management` |
 
-### 7.2 后续优化
+### 10.2 职责划分
 
-| 步骤 | 操作 | 状态 |
+| 原则 | 说明 | 反例 |
 |------|------|------|
-| 5 | 配置路由绑定 | ⏳ |
-| 6 | 添加 Agent 监控 | ⏳ |
-| 7 | 创建 Agent 健康检查 | ⏳ |
+| **高内聚** | 每个 Agent 专注一个领域 | Ella 既做合同又做项目 |
+| **低耦合** | Agent 间通过 Jerry 协调 | Ella 直接调用 Oliver |
+| **可替代** | 职责可独立替换 | 硬编码依赖 |
+| **可扩展** | 预留技能扩展接口 | 封闭的固定实现 |
+
+### 10.3 安全原则
+
+| 原则 | 实施方法 |
+|------|---------|
+| **最小权限** | 每个 Agent 只有所需的最小权限 |
+| **凭证隔离** | 每个 Agent 的凭证独立存储 |
+| **操作审计** | 所有外部操作记录日志 |
+| **定期审查** | 每月审查权限和凭证 |
+
+### 10.4 维护规范
+
+| 任务 | 频率 | 负责人 |
+|------|------|--------|
+| 日志更新 | 每日 | 对应 Agent |
+| 记忆整理 | 每周 | 对应 Agent |
+| 技能更新 | 按需 | Jerry |
+| 健康检查 | 每日 | Jerry (Heartbeat) |
+| 备份推送 | 每次变更后 | 对应 Agent |
 
 ---
 
-_创建时间: 2026-04-12 14:32 | 版本: v1.0 | 作者: Jerry 🦞_
+## 十一、风险 & 回退
+
+| 风险 | 影响 | 可能性 | 应对 |
+|------|------|--------|------|
+| 创建失败 | Agent 不可用 | 低 | 使用 agent-creator.sh 重试 |
+| 注册冲突 | 配置覆盖 | 低 | 备份 openclaw.json |
+| 技能不兼容 | 功能异常 | 中 | skill-vetter 预扫描 |
+| 路由错误 | 消息丢失 | 中 | 测试路由后上线 |
+| 凭证泄露 | 安全风险 | 低 | 定期轮换凭证 |
+| 磁盘满 | Agent 崩溃 | 低 | 定期清理日志 |
+
+---
+
+## 十二、与技能训练框架的关系
+
+```
+Agent 创建框架 (本文档)          技能训练框架
+┌─────────────────────┐     ┌─────────────────────┐
+│ Phase 0: 规划       │     │                     │
+│ Phase 1: 创建       │────▶│ Phase 0: 基础设施   │
+│ Phase 2: 训练       │────▶│ Phase 1: 环境准备   │
+│ Phase 3: 验证       │     │ Phase 2: 并行训练   │
+│ Phase 4: 部署       │     │ Phase 3: 系统集成   │
+│ Phase 5: 运维       │     │                     │
+└─────────────────────┘     └─────────────────────┘
+      ↑                           ↑
+      │                           │
+   Agent 生命周期              技能生命周期
+```
+
+- **Agent 创建框架** 定义如何创建和管理 Agent
+- **技能训练框架** 定义如何训练和优化技能
+- 两者在 Phase 2 (训练阶段) 交汇
+
+---
+
+_创建时间: 2026-04-12 14:32 | 版本: v2.0 | 作者: Jerry 🦞_
