@@ -73,7 +73,7 @@
 
 ## 五、不确定项
 
-- [ ] 需要 Rex 确认：Word 模板文件的完整路径
+- [ ] 需要 Rex 确认：Word 模板文件的完整路径：/Users/bangcle/Downloads/project delivery/（项目交付文档模板）文档名称_V1.X.docx
 - [ ] 需要确认：是否需要解析所有 CSV 文件
 
 ## 六、验收标准
