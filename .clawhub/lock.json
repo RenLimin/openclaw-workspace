@@ -60,6 +60,38 @@
     "brainstorming-tazio": {
       "version": "1.0.0",
       "installedAt": 1775956771086
+    },
+    "excel-xlsx": {
+      "version": "1.0.2",
+      "installedAt": 1775962166069
+    },
+    "pdf-ocr-extraction": {
+      "version": "1.0.3",
+      "installedAt": 1775962166649
+    },
+    "generate-excel": {
+      "version": "1.0.0",
+      "installedAt": 1775962166796
+    },
+    "playwright-browser-automation": {
+      "version": "2.0.0",
+      "installedAt": 1775962166797
+    },
+    "pptx-generator": {
+      "version": "1.0.2",
+      "installedAt": 1775962166804
+    },
+    "word-docx": {
+      "version": "1.0.2",
+      "installedAt": 1775962187296
+    },
+    "generate-word-docx": {
+      "version": "1.0.0",
+      "installedAt": 1775962187775
+    },
+    "excel-formula": {
+      "version": "2.0.1",
+      "installedAt": 1775962188780
     }
   }
 }
