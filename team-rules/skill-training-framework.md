@@ -233,6 +233,7 @@ Agent 收到训练任务后，必须先生成处理方案，格式如下：
    ▼ 失败
 2. 自行研究
    ├── 使用 tavily / websearch 搜索
+   ├── 使用 `gh search code/repos/issues` 搜索 GitHub 代码/仓库/问题
    ├── 使用 summarize 提炼关键信息
    ├── 查找 ClawHub 是否有可用技能
    │
@@ -255,17 +256,22 @@ Agent 收到训练任务后，必须先生成处理方案，格式如下：
 自主执行过程中，如需要新技能：
 
 ```bash
-# 1. 搜索 ClawHub
+# 1. 搜索 GitHub（代码示例、开源实现、最佳实践）
+gh search code "<关键词>" --language python
+gh search repos "<关键词>" --stars=">100"
+gh search issues "<关键词>"
+
+# 2. 搜索 ClawHub（OpenClaw 专用技能）
 clawhub search "<关键词>"
 
-# 2. 安全扫描（必须执行）
+# 3. 安全扫描（必须执行）
 openclaw skills info <slug>
 # 人工检查技能内容，确认无风险
 
-# 3. 安装
+# 4. 安装
 openclaw skills install <slug>
 
-# 4. 记录
+# 5. 记录
 # 写入 DEPENDENCIES.md + memory/YYYY-MM-DD.md
 ```
 
