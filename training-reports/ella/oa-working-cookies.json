@@ -1,0 +1,52 @@
+[
+  {
+    "name": "JSESSIONID",
+    "value": "3293CF8EE1395167559D30FCACD2935B",
+    "domain": "iam.bangcle.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "x-access-token",
+    "value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMTcwOWNkOS00ZDI0LTQyMWEtOThmNS0zZTk2OWU5ZjgwYzAiLCJpYXQiOjE3NzYwNzA5MjQsImlzcyI6IkJhbmdjbGUiLCJleHAiOjE3NzYwNzgxMjQsIkxvZ2luSWQiOiJsaW1pbi5yZW4ifQ.tW4aPPcxy_Mq1cF3NUiruAYfhfdwusXFXkzFFI9Cce8",
+    "domain": "iam.bangcle.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ecology_JSessionid",
+    "value": "aaaFvDsUFOTMB_sknB01z",
+    "domain": "oa.bangcle.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "JSESSIONID",
+    "value": "aaaFvDsUFOTMB_sknB01z",
+    "domain": "oa.bangcle.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__randcode__",
+    "value": "37fc9f31-feee-4acd-9a78-354c4c1e4379",
+    "domain": "oa.bangcle.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]
