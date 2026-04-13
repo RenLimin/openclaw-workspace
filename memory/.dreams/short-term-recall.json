@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T09:19:16.303Z",
+  "updatedAt": "2026-04-13T13:54:28.220Z",
   "entries": {
     "memory:memory/2026-04-11.md:25:53": {
       "key": "memory:memory/2026-04-11.md:25:53",
@@ -9,19 +9,21 @@
       "endLine": 53,
       "source": "memory",
       "snippet": "- 创建 5 个 agent 独立目录结构: - jerry, ella, oliver, aaron, iris - 每个含: agent/, workspace/skills/, workspace/scripts/, sessions/, memory/, data/ - 初始化各 agent 配置文件 (config.json) - 初始化各 agent 训练记忆本 - 更新 MEMORY.md ## Phase 1 补充 (21:30) - Rex 确认并增强规则: - 优先级 P0/P1/P2 定义（紧急/重要/常规） - 错误处理: Agent 重试 3 次 → Jerry 重试 3 次 → 上报 Rex - 职责边界: OA=泛微OA, ONES=万事ONES - 安全规则强化: Keychain 命名规范、浏览器操作约束、生产数据定义 - 训练规则强化: 训练失败处理、Phase 3/4 验收标准、跳过策略 - GitHub 规则简化: 单 main 分支、去掉 feat 分支 - 训练前必读顺序: 安全 → 通用 → 技能 → 训练 → 记忆本 - 新增 skill-rules.md（技能管理规范）: - 技能为核心颗粒度，完整独立 - 每个技能必须有 DEPENDENCIES.md 依赖清单 - 每个技能必须有 _meta.json 元数据 - 外部技能每周更新检查（Cron 任务） - 已本地修改的外部技能: 检查上游 → 利弊分析 → Rex 审批 - 4 种技能分类: 域技能/共享工具/外",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.9551244852794254,
+      "totalScore": 1.4346344917985436,
       "maxScore": 0.4913105091340946,
       "firstRecalledAt": "2026-04-12T09:19:07.252Z",
-      "lastRecalledAt": "2026-04-12T09:19:16.303Z",
+      "lastRecalledAt": "2026-04-13T13:54:28.220Z",
       "queryHashes": [
         "e6e74af54ea1",
-        "1e796f3ad134"
+        "1e796f3ad134",
+        "9a03f49e8fc5"
       ],
       "recallDays": [
-        "2026-04-12"
+        "2026-04-12",
+        "2026-04-13"
       ],
       "conceptTags": [
         "workspace/skills",
@@ -103,18 +105,20 @@
       "endLine": 93,
       "source": "memory",
       "snippet": "- 状态: channels.openclawwechat 已写入配置 ## 10:44 - 核心能力训练计划 v2.0 **5 项能力 + 1 项格式转换**: 1. 浏览器自动化 (Playwright 1.58.0) ✅ 技能已安装 2. PDF/图片解析 (Tesseract + PyMuPDF + 百炼视觉模型) ✅ 技能已安装 3. Excel 解析 (openpyxl + formulas) ✅ 技能已安装 4. Word 解析 (python-docx) ✅ 技能已安装 5. Office 制作 (python-pptx + xlsxwriter) ✅ 技能已安装 6. 格式转换 (LibreOffice 26.2.2) ⏳ 下载中 **Python 新增包**: python-pptx 1.0.2, formulas **ClawHub 新增技能**: playwright-browser-automation, pdf-ocr-extraction, excel-xlsx, excel-formula, word-docx, generate-excel, generate-word-docx, pptx-generator **完整训练计划**: `team-rules/training-proposals/2026-04-12-core-capabilities.md` ## 待办 - LibreOffice 安装完成后执行能力 6 测试 - 启动 Phase B 自主执行（5 项能力测试） - Rex 审阅训练计划后开始执行 ## 10:52",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.4584778557905645,
-      "maxScore": 0.4584778557905645,
+      "totalScore": 1.1303017053479145,
+      "maxScore": 0.67182384955735,
       "firstRecalledAt": "2026-04-12T09:19:16.303Z",
-      "lastRecalledAt": "2026-04-12T09:19:16.303Z",
+      "lastRecalledAt": "2026-04-13T12:12:21.200Z",
       "queryHashes": [
-        "1e796f3ad134"
+        "1e796f3ad134",
+        "b67162dc71a3"
       ],
       "recallDays": [
-        "2026-04-12"
+        "2026-04-12",
+        "2026-04-13"
       ],
       "conceptTags": [
         "channels.openclawwechat",
@@ -125,6 +129,162 @@
         "python-pptx",
         "26.2.2",
         "1.0.2"
+      ]
+    },
+    "memory:memory/2026-04-12.md:26:65": {
+      "key": "memory:memory/2026-04-12.md:26:65",
+      "path": "memory/2026-04-12.md",
+      "startLine": 26,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "- ✅ L3 QA (3): runesleo-systematic-debugging, feedback-loop, imbeasting-test-driven-development - ⏭️ claw-shell 跳过（需 tmux，exec 已覆盖能力） **Phase 1: Agent 环境准备** - ✅ Ella: oa-approval + contract-management - ✅ Oliver: ones-integration - ✅ Aaron: business-analysis - ✅ Iris: email-management ## 09:30 - Python 依赖安装 - pandas 2.3.3 (升级), numpy 2.2.6, matplotlib 3.10.8, pdfminer.six 已安装 - 所有 DEPENDENCIES.md 和 TOOLS.md 已更新 ## 09:40 - 训练框架升级：自主训练执行协议 Rex 要求： 1. Agent 先自动生成处理方案，Rex 审阅后再执行 2. 执行过程中遇瓶颈自行研究、自行查找技能、自行记录 3. 核心目的：全自动化实现 **产出**: Section IV 自主训练执行协议写入 `skill-training-framework.md` ## 09:51 - 企业微信频道配置 - 插件: `@wecom/wecom-openclaw-plugin@2026.4.8` - WebSocket: ✅ 已连接，认证成功 - 状态: enabled, con",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.083845163408889,
+      "maxScore": 0.6199331411968518,
+      "firstRecalledAt": "2026-04-13T12:12:21.200Z",
+      "lastRecalledAt": "2026-04-13T13:54:28.220Z",
+      "queryHashes": [
+        "b67162dc71a3",
+        "9a03f49e8fc5"
+      ],
+      "recallDays": [
+        "2026-04-13"
+      ],
+      "conceptTags": [
+        "runesleo-systematic-debugging",
+        "feedback-loop",
+        "claw-shell",
+        "oa-approval",
+        "contract-management",
+        "ones-integration",
+        "business-analysis",
+        "email-management"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1:36": {
+      "key": "memory:memory/2026-04-12.md:1:36",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "# 2026-04-12 (周日) ## 05:37 - 技能训练框架重建 Rex 要求重新规划技能训练框架，核心要求： 1. 技能结构统一，可独立提交 GitHub 并共享安装 2. 技能全自动化，以目标为核心 3. 使用官方渠道：ClawHub、docs.openclaw.ai、GitHub openclaw 4. 安装 20+ 基础技能（L0-L3 层） **产出**： - `team-rules/skill-training-framework.md` — 完整训练框架文档 - 4 层架构：Core → Safety/Tools → Information → QA → Domain - 技能目录规范：`_meta.json` + `DEPENDENCIES.md` - 安装执行清单（含 ClawHub slug 推荐） - Phase 0-3 训练阶段规划 - GitHub 提交规范（每个技能独立 commit） - 自动化清单（触发方式 + 验证方式） ## 09:08 - Phase 0 + Phase 1 执行完成 **Phase 0: L0-L3 技能安装** - ✅ L0 Core (5): self-improving, proactive-agent-lite, openclaw-memory, context-scope-tags, prompt-enhancer - ✅ L1 Safety (2): openclaw-skill-vetter, code-interpreter(手动创建) - ✅ L2 Info (",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6112485945820507,
+      "maxScore": 0.6112485945820507,
+      "firstRecalledAt": "2026-04-13T12:12:21.200Z",
+      "lastRecalledAt": "2026-04-13T12:12:21.200Z",
+      "queryHashes": [
+        "b67162dc71a3"
+      ],
+      "recallDays": [
+        "2026-04-13"
+      ],
+      "conceptTags": [
+        "docs.openclaw.ai",
+        "l0-l3",
+        "safety/tools",
+        "meta.json",
+        "dependencies.md",
+        "0-3",
+        "self-improving",
+        "proactive-agent-lite"
+      ]
+    },
+    "memory:memory/2026-04-13.md:1:29": {
+      "key": "memory:memory/2026-04-13.md:1:29",
+      "path": "memory/2026-04-13.md",
+      "startLine": 1,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "# 2026-04-13 Memory ## OA 登录问题 - 关键发现 - **已尝试 25+ 种方案**: headless/有头浏览器、不同 SSO 端点、Cookie 注入、表单提交、JS 调用等 - **根本原因**: IAM-OA SSO 集成未正确配置 - IAM 登录后无回调 URL 重定向到 OA - OA SSO 端点 (`/api/sso/login`, `/login/VerifyLoginWeaversso.jsp`) 返回 \"登录信息超时\" 或 \"非法登录方式\" - 两个系统使用独立会话，无法共享 Cookie - **Rex 提示**: OA 首次登录须通过 IAM 页面，点击应用卡片跳转 (有头模式) - **Cookie 导出**: 已导出到 `training-reports/ella/iam-cookies.json`，但 Cookie 无法建立 OA 会话 - **状态**: ✅ OA 登录已解决! ### ✅ 成功方案 (2026-04-13 16:45) **OA 登录完整流程**: 1. 登录 IAM (https://iam.bangcle.com/) 2. 调用 API: `GET /api/application/apps/jumpSystem?appid=9` - Header: `x-access-token: <token>` (从 localStorage.GlobalState.token 获取) 3. 返回跳转 URL: `https://oa.bangcle.com/api/bangc",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7652256648440496,
+      "maxScore": 0.7652256648440496,
+      "firstRecalledAt": "2026-04-13T13:54:28.220Z",
+      "lastRecalledAt": "2026-04-13T13:54:28.220Z",
+      "queryHashes": [
+        "9a03f49e8fc5"
+      ],
+      "recallDays": [
+        "2026-04-13"
+      ],
+      "conceptTags": [
+        "headless/有头浏览器",
+        "iam-oa",
+        "api/sso/login",
+        "login/verifyloginweaversso.jsp",
+        "iam.bangcle.com",
+        "api/application/apps/jumpsystem",
+        "x-access-token",
+        "localstorage.globalstate.token"
+      ]
+    },
+    "memory:memory/2026-04-13.md:23:43": {
+      "key": "memory:memory/2026-04-13.md:23:43",
+      "path": "memory/2026-04-13.md",
+      "startLine": 23,
+      "endLine": 43,
+      "source": "memory",
+      "snippet": "**关键发现**: - Token 在 `x-access-token` header 中，不是 `Authorization: Bearer` - OA 应用 ID = 9 - 应用列表 API: `/api/application/apps/getPermissionApps` - 待办 API: `/api/application/apps/getBacklog` (body: {userId, systemkey}) **已获取 Cookie**: 5 个 (含 OA ecology_JSessionid) - 保存位置: `training-reports/ella/oa-working-cookies.json` - 截图: `training-reports/ella/oa-success.png` - 脚本: `training-reports/ella/access-oa-via-jump.py` **Ella 阻塞已解除** ✅ 可以开始合同自动化训练 ## 训练进度 - Phase A 方案: Ella, Oliver, Aaron, Iris 全部完成 - Aaron: Excel/CSV/Word 分析完成，模板生成 - Oliver: ONES 登录成功，系统探索完成 - Iris: 邮箱配置完成，IMAP/SMTP 测试通过 - GitHub: `d4a404b` 已推送",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7406909746627891,
+      "maxScore": 0.7406909746627891,
+      "firstRecalledAt": "2026-04-13T13:54:28.220Z",
+      "lastRecalledAt": "2026-04-13T13:54:28.220Z",
+      "queryHashes": [
+        "9a03f49e8fc5"
+      ],
+      "recallDays": [
+        "2026-04-13"
+      ],
+      "conceptTags": [
+        "x-access-token",
+        "api/application/apps/getbacklog",
+        "ecology-jsessionid",
+        "excel/csv/word",
+        "imap/smtp",
+        "关键",
+        "发现",
+        "token"
+      ]
+    },
+    "memory:memory/2026-04-12.md:231:258": {
+      "key": "memory:memory/2026-04-12.md:231:258",
+      "path": "memory/2026-04-12.md",
+      "startLine": 231,
+      "endLine": 258,
+      "source": "memory",
+      "snippet": "**尝试方案**: 12 种 (全部失败) - headless 浏览器 (Chromium/Firefox) - Stealth 模式 - 有头浏览器 - 持久化上下文 - 短用户名登录 - Cookie 注入 - 表单提交 - JavaScript 点击 - 修改 Cookie domain **唯一可行方案**: 手动导出 Cookie 1. 手动登录 IAM (https://iam.bangcle.com/, limin.ren / June-123) 2. 同一浏览器访问 OA (https://oa.bangcle.com/) 3. F12 → Application → Cookies → Export 4. 保存到: training-reports/ella/iam-cookies.json **重要教训**: - SSO 系统不一定支持自动化登录 - 遇到 IAM/SSO 系统，优先手动导出 Cookie - 不要在 headless 模式上浪费超过 30 分钟 - 优先寻找 API 接口 **文档**: - `training-reports/ella/oa-final-recommendation.md` - `training-reports/ella/oa-cookie-guide.md` - `training-reports/ella/oa-ssl-issue-explained.md`",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7393857795255641,
+      "maxScore": 0.7393857795255641,
+      "firstRecalledAt": "2026-04-13T13:54:28.220Z",
+      "lastRecalledAt": "2026-04-13T13:54:28.220Z",
+      "queryHashes": [
+        "9a03f49e8fc5"
+      ],
+      "recallDays": [
+        "2026-04-13"
+      ],
+      "conceptTags": [
+        "chromium/firefox",
+        "iam.bangcle.com",
+        "limin.ren",
+        "june-123",
+        "oa.bangcle.com",
+        "iam/sso",
+        "尝试",
+        "方案"
       ]
     }
   }
