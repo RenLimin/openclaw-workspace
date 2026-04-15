@@ -30,4 +30,11 @@
   - 建立 team-rules/ 统一规则框架（4→5 个文件，新增 skill-rules.md）
 
 ## 经验教训
-_(待积累)_
+- **2026-04-15**: OpenClaw 升级 (`npm update -g`) 可能导致模块丢失，需用 `npm install -g openclaw --force` 修复
+- **2026-04-15**: 企业微信 errcode=93006 (invalid chatid) — WebSocket 连通≠会话有效，用户需主动发消息重建会话
+- WeCom DM policy="open" 存在安全风险，需配置 allowFrom
+
+## 待办
+- [ ] Rex 在企业微信中重新给 bot 发消息，重建会话 (修复 93006)
+- [ ] 修复 WeCom 安全配置 (allowFrom, groupPolicy)
+- [ ] 重新启用 Iris 邮件 Cron (依赖 wecom 会话恢复)
