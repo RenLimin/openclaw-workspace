@@ -32,10 +32,12 @@
 ## 经验教训
 - **2026-04-15**: OpenClaw 升级 (`npm update -g`) 可能导致模块丢失，需用 `npm install -g openclaw --force` 修复
 - **2026-04-15**: 企业微信 errcode=93006 (invalid chatid) — WebSocket 连通≠会话有效，用户需主动发消息重建会话
-- **2026-04-15**: 子代理默认 10min 超时不够，复杂任务需设 20min+
+- **2026-04-15**: 子代理默认 10min 超时不够，复杂任务需设 20min+；含浏览器操作的任务需 30min+
 - **2026-04-15**: Cron 投递 WeCom 需明确指定 `delivery.to` 为 userid (Rex = 1313)
-- WeCom DM policy="open" 存在安全风险，需配置 allowFrom
-- OA 合同附件 PDF 下载持续失败 (5+ 次尝试)，可能需要手动操作
+- **2026-04-15**: 禁止用 AppleScript 操控用户的 Chrome（webchat 所在浏览器），所有浏览器操作必须用 Playwright 启动独立实例
+- **2026-04-15**: OA 附件 PDF 下载最终方案: browser_cookie3 提取 Chrome Cookie → Playwright 注入 → React fiber onClick → 文档查看器 → `/weaver/weaver.file.FileDownload?fileid=xxx` 直链下载
+- **2026-04-15**: HEARTBEAT_OK 不应发到 webchat，已禁用 (`heartbeat.every: "0m"`)
+- 所有过程文件/临时文件必须存放在各自 Agent workspace 内，最终输出文档才可按指令存放到其他路径
 
 ## 待办
 - [ ] Rex 在企业微信中重新给 bot 发消息，重建会话 (修复 93006)
