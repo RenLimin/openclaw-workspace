@@ -1,7 +1,7 @@
 [
   {
     "name": "JSESSIONID",
-    "value": "3293CF8EE1395167559D30FCACD2935B",
+    "value": "EB3F8E84CE1B360F20DCFBBDB181CF06",
     "domain": "iam.bangcle.com",
     "path": "/",
     "expires": -1,
@@ -11,7 +11,7 @@
   },
   {
     "name": "x-access-token",
-    "value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMTcwOWNkOS00ZDI0LTQyMWEtOThmNS0zZTk2OWU5ZjgwYzAiLCJpYXQiOjE3NzYwNzA5MjQsImlzcyI6IkJhbmdjbGUiLCJleHAiOjE3NzYwNzgxMjQsIkxvZ2luSWQiOiJsaW1pbi5yZW4ifQ.tW4aPPcxy_Mq1cF3NUiruAYfhfdwusXFXkzFFI9Cce8",
+    "value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMDI0MmY4Yi0wZGI0LTQ1ZmUtYWI0MC05NDEzNDRhNDI4Y2YiLCJpYXQiOjE3NzYyMjYxNTEsImlzcyI6IkJhbmdjbGUiLCJleHAiOjE3NzYyMzMzNTEsIkxvZ2luSWQiOiJsaW1pbi5yZW4ifQ.H53k44T0igc7mg9gY4v1LnxUOygg60OfLUpQPQFFa-M",
     "domain": "iam.bangcle.com",
     "path": "/",
     "expires": -1,
@@ -21,7 +21,7 @@
   },
   {
     "name": "ecology_JSessionid",
-    "value": "aaaFvDsUFOTMB_sknB01z",
+    "value": "aaaDIGRIXNATq-eWAB01z",
     "domain": "oa.bangcle.com",
     "path": "/",
     "expires": -1,
@@ -31,7 +31,7 @@
   },
   {
     "name": "JSESSIONID",
-    "value": "aaaFvDsUFOTMB_sknB01z",
+    "value": "aaaDIGRIXNATq-eWAB01z",
     "domain": "oa.bangcle.com",
     "path": "/",
     "expires": -1,
@@ -41,7 +41,7 @@
   },
   {
     "name": "__randcode__",
-    "value": "37fc9f31-feee-4acd-9a78-354c4c1e4379",
+    "value": "a19a9a24-3cbe-4ec8-a338-187f2d856b74",
     "domain": "oa.bangcle.com",
     "path": "/",
     "expires": -1,
